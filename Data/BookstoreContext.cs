@@ -8,7 +8,7 @@ namespace Fisher.Bookstore.Api.Data
         public BookstoreContext(DbContextOptions<BookstoreContext> options)
             : base(options)
         {
-            
+            // delete constructor code that seeded our data
         }
 
         protected override void OnModelCreating(ModelBuilder builder) => base.OnModelCreating(builder);

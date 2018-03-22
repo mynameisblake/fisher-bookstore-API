@@ -11,9 +11,10 @@ using System;
 namespace Fisher.Bookstore.Api.Migrations
 {
     [DbContext(typeof(BookstoreContext))]
-    partial class BookstoreContextModelSnapshot : ModelSnapshot
+    [Migration("20180321191327_many-to-many")]
+    partial class manytomany
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -27,9 +28,13 @@ namespace Fisher.Bookstore.Api.Migrations
 
                     b.Property<string>("Bio");
 
+                    b.Property<int?>("BookId");
+
                     b.Property<string>("Name");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("BookId");
 
                     b.ToTable("Authors");
                 });
@@ -38,8 +43,6 @@ namespace Fisher.Bookstore.Api.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
-
-                    b.Property<int?>("AuthorId");
 
                     b.Property<string>("Isbn");
 
@@ -51,16 +54,14 @@ namespace Fisher.Bookstore.Api.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AuthorId");
-
                     b.ToTable("Books");
                 });
 
-            modelBuilder.Entity("Fisher.Bookstore.Api.Models.Book", b =>
+            modelBuilder.Entity("Fisher.Bookstore.Api.Models.Author", b =>
                 {
-                    b.HasOne("Fisher.Bookstore.Api.Models.Author", "Author")
-                        .WithMany("Titles")
-                        .HasForeignKey("AuthorId");
+                    b.HasOne("Fisher.Bookstore.Api.Models.Book")
+                        .WithMany("Authors")
+                        .HasForeignKey("BookId");
                 });
 #pragma warning restore 612, 618
         }
