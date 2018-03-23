@@ -35,7 +35,7 @@ namespace Fisher.Bookstore.Api.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post(Author author)
+        public IActionResult Post([FromBody] Author author)
         {
             if(author == null)
             {
