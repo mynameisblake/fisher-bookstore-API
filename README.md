@@ -52,9 +52,8 @@ When we ended Lab 6, you were asked to do some API testing to see what you found
 
 1. The Authors behave almost identically to Books.
 
-
-
 ## TODO
+
 [ ] Do not allow null submissions.
 [ ] Fix JSON serializer.
 [ ] Don't change Author in the Books API
