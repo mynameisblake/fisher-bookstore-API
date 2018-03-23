@@ -49,7 +49,7 @@ namespace Fisher.Bookstore.Api.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody]Author newAuthor)
+        public IActionResult Put(int id, [FromBody] Author newAuthor)
         {
             if (newAuthor == null || newAuthor.Id != id)
             {
