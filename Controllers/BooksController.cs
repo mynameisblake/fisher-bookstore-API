@@ -35,7 +35,7 @@ namespace Fisher.Bookstore.Api.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post(Book book)
+        public IActionResult Post([FromBody] Book book)
         {
             if(book == null)
             {
@@ -49,23 +49,23 @@ namespace Fisher.Bookstore.Api.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody]Book newBook)
+        public IActionResult Put(int id, [FromBody] Book item)
         {
-            if (newBook == null || newBook.Id != id)
+            if (item == null || item.Id != id)
             {
                 return BadRequest();
             }
-            var currentBook = this.db.Books.FirstOrDefault(x => x.Id == id);
+            var book = this.db.Books.FirstOrDefault(x => x.Id == id);
 
-            if (currentBook == null)
+            if (book == null)
             {
                 return NotFound();
             }
 
-            currentBook.Author = newBook.Author;
-            currentBook.PublishDate = newBook.PublishDate;
+            book.Author = item.Author;
+            book.PublishDate = item.PublishDate;
 
-            this.db.Books.Update(currentBook);
+            this.db.Books.Update(book);
             this.db.SaveChanges();
             return NoContent();
         }
