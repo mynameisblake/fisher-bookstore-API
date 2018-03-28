@@ -4,8 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Fisher.Bookstore.Api.Models;
 using Microsoft.AspNetCore.Mvc;
-
-namespace Fisher.Bookstore.Api.Controllers
+using Fisher.Bookstore.Api.Data;
+namespace Fisher.Bookstore.Api.Data
 {
     [Route("api/[controller]")]
     public class BooksController : Controller
